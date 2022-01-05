@@ -9,7 +9,7 @@ module Twitter
       @config = twitter_api_config
     end
 
-    def perform
+    def action
       rest_client = configure_rest_client
       stream_client = configure_stream_client
       loop do
@@ -24,7 +24,7 @@ module Twitter
     def hashtags(tweet)
       tweet_hash = tweet.to_h
       extended_tweet = tweet_hash[:extended_tweet]
-    
+
       (extended_tweet && extended_tweet[:entities][:hashtags]) || tweet_hash[:entities][:hashtags]
     end
 
@@ -34,13 +34,13 @@ module Twitter
 
     def allowed_hashtags?(tweet)
       includes_allowed_hashtags = false
-    
+
       hashtags(tweet).each do |hashtag|
-        if HASHTAGS_TO_WATCH.map(&:upcase).include?("##{hashtag[:text]&.upcase}")
-          includes_allowed_hashtags = true
-    
-          break
-        end
+        next unless HASHTAGS_TO_WATCH.map(&:upcase).include?("##{hashtag[:text]&.upcase}")
+
+        includes_allowed_hashtags = true
+
+        break
       end
       includes_allowed_hashtags
     end
@@ -48,35 +48,35 @@ module Twitter
     def allowed_hashtag_count?(tweet)
       hashtags(tweet)&.count <= MAXIMUM_HASHTAG_COUNT
     end
-    
+
     def sensitive_tweet?(tweet)
       tweet.possibly_sensitive?
     end
-    
+
     def should_re_tweet?(tweet)
       tweet?(tweet) && !retweet?(tweet) && allowed_hashtag_count?(tweet) && !sensitive_tweet?(tweet) && allowed_hashtags?(tweet)
     end
-    
+
     def re_tweet(rest_client, stream_client)
-      stream_client.filter(:track => HASHTAGS_TO_WATCH.join(',')) do |tweet|
+      stream_client.filter(track: HASHTAGS_TO_WATCH.join(',')) do |tweet|
         puts "\nCaught the tweet -> #{tweet.text}"
-    
+
         if should_re_tweet?(tweet)
           rest_client.retweet tweet
-    
+
           puts "[#{Time.now}] Retweeted successfully!\n"
         end
       end
-    
+
       puts "[#{Time.now}] Waiting for 60 seconds ....\n"
-    
+
       sleep 60
     end
-    
+
     def retweet?(tweet)
       tweet.retweet?
     end
-    
+
     def twitter_api_config
       {
         consumer_key: ENV['CONSUMER_KEY'],
@@ -90,12 +90,11 @@ module Twitter
       puts 'Cofiguring rest client'
       Twitter::REST::Client.new(config)
     end
+
     def configure_stream_client
       puts 'configuring stream client'
       Twitter::Streaming::Client.new(config)
     end
-    HASHTAGS_TO_WATCH = %w[#rails #ruby #RubyOnRails]
+    HASHTAGS_TO_WATCH = %w[#JavaScript #100daysofcode #RubyOnRails #webdev #crypto]
   end
 end
-
-
