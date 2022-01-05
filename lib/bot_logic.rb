@@ -13,12 +13,13 @@ module Twitter
     def action
       rest_client = config_rest_client
       stream_client = config_stream_client
-      while true
+      loop do
         re_tweet(rest_client, stream_client)
       end
     end
+
     private
-    
+
     def twitter_api_config
       {
         consumer_key: ENV['CONSUMER_KEY'],
@@ -28,9 +29,21 @@ module Twitter
       }
     end
 
+    MAXIMUM_HASHTAG_COUNT = 10
+
     def config_rest_client
       puts 'Cofiguring rest client'
       Twitter::REST::Client.new(config)
     end
+
+    def config_stream_client
+      puts 'Configuring streaming client'
+      Twitter::REST::Client.new(config)
+    end
+
+    def should_re_tweet?(tweet)
+      tweet?(tweet) && !retweet?(tweet) && allowed_hashtag_count?(tweet) && !sensitive_tweet?(tweet) && allowed_hashtags?(tweet)
+    end
+    
   end
 end
