@@ -1,4 +1,6 @@
 require 'twitter'
+require_relative '/application
+'
 
 module Twitter
   class Retweet
@@ -16,9 +18,8 @@ module Twitter
       end
     end
     private
+    
     def twitter_api_config
-      
-    def tweeter_api_config
       {
         consumer_key: ENV['CONSUMER_KEY'],
         consumer_secret: ENV['CONSUMER_SECRET'],
@@ -26,6 +27,10 @@ module Twitter
         access_token_secret: ENV['ACCESS_TOKEN_SECRET']
       }
     end
+
+    def config_rest_client
+      puts 'Cofiguring rest client'
+      Twitter::REST::Client.new(config)
     end
   end
 end
