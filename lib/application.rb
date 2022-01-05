@@ -5,3 +5,4 @@ Figaro.application = Figaro::Application.new(
   path: File.expand_path('config/application.yml')
 )
 
+Figaro.load
