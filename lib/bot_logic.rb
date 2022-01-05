@@ -44,6 +44,30 @@ module Twitter
     def should_re_tweet?(tweet)
       tweet?(tweet) && !retweet?(tweet) && allowed_hashtag_count?(tweet) && !sensitive_tweet?(tweet) && allowed_hashtags?(tweet)
     end
+
+    def tweet?(tweet)
+      tweet.is_a?(Twitter::Tweet)
+    end
+
+    def allowed_hashtags?(tweet)
+      includes_allowed_hashtags = false
     
+      hashtags(tweet).each do |hashtag|
+        if HASHTAGS_TO_WATCH.map(&:upcase).include?("##{hashtag[:text]&.upcase}")
+          includes_allowed_hashtags = true
+    
+          break
+        end
+      end
+      includes_allowed_hashtags
+    end
+
+    def hashtags(tweet)
+      tweet_hash = tweet.to_h
+      extended_tweet = tweet_hash[:extended_tweet]
+    
+      (extended_tweet && extended_tweet[:entities][:hashtags]) || tweet_hash[:entities][:hashtags]
+    end
+
   end
 end
