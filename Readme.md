@@ -8,7 +8,7 @@ A Twitter retweet bot that retweet my favourite hashtags
 
 ## Live Demo
 
-Check out Twitter account [@adearael](https://www.twitter.com/@adearael)
+Check out Twitter account [@adearael](https://www.twitter.com/@adearael). Give me a follow too :metal:
 
 ## How to use the bot
 
