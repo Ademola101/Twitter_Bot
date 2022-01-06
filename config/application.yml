@@ -1,8 +1,0 @@
-defaults: &defaults
-  CONSUMER_KEY: "wkBX33vD1I2HlCOwxpao4y6Hn" # API KEY
-  CONSUMER_SECRET: "PCavrdQYbLl6eyLmHln2HAJo94rgey5DC7lCPF5qIDDvgNvF1Z" # API KEY SECRET
-  ACCESS_TOKEN: "1226580573596065806-8XeWJAqNWqeWe0WvJVKmr8zuh9VGm1"
-  ACCESS_TOKEN_SECRET: "J9plDJbRqyVCO34b4s8TsoPXvh1jqgrnpgxmCtJ07nGZR"
-
-production:
-  <<: *defaults

@@ -1,3 +1,4 @@
+config/application.yml
 
 # Ignore byebug history
 .byebug_history
@@ -8,6 +9,7 @@ ruby-twitter-bot.pem
 # Ignore IDE folders
 .idea/
 
+config/
 
 
 
