@@ -29,7 +29,7 @@ module Twitter
     end
 
     def tweet?(tweet)
-      tweet.is_a?(Twitter::Tweet)
+      tweet.is_a?(Twitter::Tweet) # Checking if they are of the same object
     end
 
     def allowed_hashtags?(tweet)
@@ -95,6 +95,6 @@ module Twitter
       puts 'configuring stream client'
       Twitter::Streaming::Client.new(config)
     end
-    HASHTAGS_TO_WATCH = %w[#JavaScript #100daysofcode #RubyOnRails #webdev #crypto]
+    HASHTAGS_TO_WATCH = %w[#JavaScript #100daysofcode #RubyOnRails #webdev].freeze
   end
 end
