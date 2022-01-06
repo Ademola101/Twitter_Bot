@@ -8,7 +8,7 @@ A Twitter retweet bot that retweet my favourite hashtags
 
 ## Live Demo
 
-Check out Twitter account [@adearael](www.twitter.com/adearael)
+Check out Twitter account [@adearael](www.twitter.com/@adearael)
 
 ## How to use the bot
 
@@ -28,7 +28,7 @@ Check out Twitter account [@adearael](www.twitter.com/adearael)
  cd Twitter_Bot
  ```
 
-2. If you check the Gem file, you will recognise that we need to install the gems. Thus,
+2. If you check the Gem file, you will recognise that we need to install the gems. Thus, let bundle install the gems:
   
 ``` code
  bundle install
