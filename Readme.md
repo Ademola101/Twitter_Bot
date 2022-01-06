@@ -8,11 +8,11 @@ A Twitter retweet bot that retweet my favourite hashtags
 
 ## Live Demo
 
-Check out Twitter account [@adearael](www.twitter.com/@adearael)
+Check out Twitter account [@adearael](https://www.twitter.com/@adearael)
 
 ## How to use the bot
 
-- First off, interacting with Twitter API requires an API key among others. The tokens needed can be easily acquired by applying for a Twitter developer account at [TwitterDev](developer.twitter.com). If the application is granted, then Bingo!!!
+- First off, interacting with Twitter API requires an API key among others. The tokens needed can be easily acquired by applying for a Twitter developer account at [TwitterDev](https://developer.twitter.com). If the application is granted, then Bingo!!!
 
 ## Seting up the repository on  PC
 
