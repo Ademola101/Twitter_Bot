@@ -46,7 +46,8 @@ module Twitter
     end
 
     def allowed_hashtag_count?(tweet)
-      hashtags(tweet)&.count <= MAXIMUM_HASHTAG_COUNT
+      hash_count = hashtags(tweet)&.count
+      hash_count <= MAXIMUM_HASHTAG_COUNT
     end
 
     def sensitive_tweet?(tweet)
