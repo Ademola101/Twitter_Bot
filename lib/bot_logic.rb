@@ -71,7 +71,7 @@ module Twitter
 
       puts "[#{Time.now}] Waiting for 60 seconds ....\n"
 
-      sleep 60
+      sleep 600
     end
 
     def retweet?(tweet)
