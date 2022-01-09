@@ -21,10 +21,3 @@ ruby-twitter-bot.pem
 
 # Ignore IDE folders
 .idea/
-
-config/application.yml
-
-config
-
-*application.yml
-application.yaml
